@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: rgb(219, 202, 202);
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            font-weight: bolder;
+            height: 50vh;
+            width: 50vw;
+            text-align: center;
+            font-size: 30px;
+            margin: 0px auto;
+        }
+    </style>
+</head>
+<body onload="Joke()">
+    <script>
+        function Joke(){
+let array=['I told my girlfriend she drew her eyebrows too high. She seemed surprised.','How do you make a tissue dance? Put a little boogie in it.','My grandfather has the heart of a lion and a lifetime ban at the zoo.','Why should you never play poker at the zoo? Too many cheetahs','Five out of six people agree that Russian Roulette is safe.','What do you call a guy who’s really loud? Mike.','My friend thinks he is smart. He told me an onion is the only food that makes you cry, so I threw a coconut at his face.','Scientists have proven that there are two things in the air that have been known to cause women to get pregnant: their legs.',`I just read a book about Helium. It was so good that I can't put it down.`,'How is Christmas like your job? You do all the work and the fat guy in the suit gets all the credit.','Q: Can February march? A: No, but April may.'];
+
+let emoji=['😀😁','🤣😂😆','😅😄😃','🤪😵🤧','🤓😝😂😅','😄😮😛']
+    let random=Number(Math.floor(0+Math.random()*10))
+    let random2=Number(Math.floor(0+Math.random()*5))
+
+    let div=document.createElement("div")
+    div.className="box";
+    document.body.appendChild(div)
+   
+    document.querySelector(".box").innerHTML=`<span>${array[random]}${emoji[random2]}</span>`
+
+        }
+    </script>
+</body>
+</html>

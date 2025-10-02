@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        .container{
+            width: 80vw;
+            height: 100vh;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        .box {
+            display: flex;
+            border: 2px solid black;
+            border-radius: 5px;
+            width: max-content;
+            height: 240px;
+            
+        }
+
+        img {
+            border-radius: 5px;
+            width: auto;
+            height: 240px;
+            object-fit: cover;
+
+        }
+
+        .img {
+            position: relative;
+        }
+
+        #time {
+            border: 2px solid black;
+            background-color: rgb(176, 174, 174);
+            border-radius: 4px;
+            padding: 4px 8px;
+            position: absolute;
+            bottom: 2px;
+            right: 10px;
+
+        }
+        h3{
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="img">
+                <img src="thumbnail.avif" id="image">
+                <p id="time">Time</p>
+            </div>
+            <div class="info">
+                <h3 id="title"> heading</h3>
+                <span id="cname">. cname</span>
+                <span id="view">. view</span>
+                <span id="month">. monthold</span>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

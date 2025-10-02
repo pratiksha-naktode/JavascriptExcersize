@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+let n1=parseInt(prompt("Enter num1"));
+let n2=parseInt(prompt("Enter num2"));
+let op=prompt("enter operater");
+let rad=Math.random();
+ let res;
+if(rad>0.5){
+   
+    switch (op) {
+        case '+':
+            res= n1-n2;
+             break;
+        case '-':
+            res= n1*n2;
+            break;
+        case '*':
+        res= n1/n2;
+            break;
+        case '/':
+            res= n1+n2;
+            break;
+    
+        default:
+            res= "Invalid operator";
+
+            break;
+    }
+}
+else{
+    switch (op) {
+        case '+':
+            res= n1+n2;
+             break;
+        case '-':
+            res= n1-n2;
+            break;
+        case '*':
+        res= n1*n2;
+            break;
+        case '/':
+            res= n1/n2;
+            break;
+    
+        default:
+            res= "Invalid operator";
+
+            break;
+    }
+
+}
+alert(res);
+</script>
+</html>

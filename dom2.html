@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 300px;
+            
+            margin: 4px;
+            border:2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <script>
+        let rad=Math.ceil(0+Math.random()*255);
+        let rad2=Math.ceil(0+Math.random()*255);
+        let rad3=Math.ceil(0+Math.random()*255);
+        
+       
+        qs=document.querySelectorAll(".box");
+        qs.forEach(ele => {
+        
+          ele.style.backgroundColor=`rgb(${rad},${rad3},${rad2})`
+        });
+    </script>
+</body>
+</html>

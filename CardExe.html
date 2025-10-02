@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        .container{
+            width: 80vw;
+            height: max-content;
+            border: 2px solid black;
+            padding: 10px;
+            background-color: rgb(188, 183, 183);
+            margin: 0px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .box{
+            width: max-content;
+            height: 240px;
+            display: flex;
+            background-color: aquamarine;
+            border-radius: 14px;
+            margin: 0px auto;
+        }
+        .image{
+            width: fit-content;
+            height: 240px;
+            position: relative;
+            
+        }
+        .img{
+            width: auto;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 14px;
+            
+        }
+        .time{
+            width: 50px;
+            height: 20px;
+            padding: 5px 10px;
+            position: absolute;
+            bottom: 1px;
+            border: 2px solid black;
+            border-radius: 4px;
+            background-color: gray;
+            right: 2px;
+
+        }
+        .info{
+            border: 2px solid  black;
+            padding: 14px;
+            white-space:wrap;
+            position: relative;
+            }
+        .heading{
+            margin: 10px 4px 1.3rem 4px;
+           
+        }
+        .sub-text{
+            margin: 12px;
+        }
+        .btn{
+            padding: 4px 12px ;
+            border-radius: 4px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+    </div>
+<button class="btn">ADD BOX</button>    
+
+</body>
+<script>
+    
+document.querySelector(".btn").addEventListener('click', () => {
+    let div = document.createElement("div");
+    div.setAttribute("class", "box");
+
+    let image = document.createElement("div");
+    image.setAttribute("class", "image");
+    div.appendChild(image);
+
+    let img = document.createElement("img");
+    img.setAttribute("class", "img");
+    img.src = "thumbnail.avif";
+    image.appendChild(img);
+
+    let divtime = document.createElement("div");
+    divtime.setAttribute("class", "time");
+    divtime.innerText = "10:00"; // Example time
+    image.appendChild(divtime);
+
+    let info = document.createElement("div");
+    info.setAttribute("class", "info");
+    div.appendChild(info);
+
+    let title = document.createElement("h3");
+    title.setAttribute("class", "heading");
+    title.innerText = "Heading";
+    info.appendChild(title);
+
+    let cname = document.createElement("span");
+    cname.innerText = "Name of channel";
+    cname.setAttribute("class", "sub-text");
+    title.insertAdjacentElement("afterend", cname);
+
+    let watching = document.createElement("span");
+    watching.innerText = "WatchingK";
+    watching.setAttribute("class", "sub-text");
+    cname.insertAdjacentElement("afterend", watching);
+
+    let months = document.createElement("span");
+    months.innerText = "Months ago";
+    months.setAttribute("class", "sub-text");
+    watching.insertAdjacentElement("afterend", months);
+
+    let container = document.querySelector(".container");
+    container.appendChild(div);
+});
+        
+            
+       
+    </script>
+</html>

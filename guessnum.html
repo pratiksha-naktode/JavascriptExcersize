@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            padding: 50px;
+            border: 2px solid gray;
+            margin: 30px;
+            width: max-content;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        #ip {
+            margin: 10px 0px;
+        }
+
+        .btn {
+            margin-top: 20px;
+        }
+
+        .para {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h2>Guess The Number</h2>
+        <label for="num">Enter Number</label><br>
+        <input type="number" id="ip">
+        <button class="btn">Guess Number</button>
+        <p class="para">Result</p>
+        <p class="score"></p>
+    </div>
+    <script>
+        let random=0;
+        function getrandomnum(){
+            random = Math.ceil(1 + Math.random() * 100);
+            console.log(random);
+        }
+
+        let inum = document.getElementById("ip");
+          let  guess=0;
+          getrandomnum()
+        let res = document.querySelector(".para")
+       
+        document.querySelector(".btn").addEventListener('click', () => {
+         let ipnum=inum.value;// get new value everytime
+             guess++;
+
+                  if (ipnum ==random) {
+                      res.textContent="Yooo!!! you guess the number"
+                      let score=100-guess;
+                        document.querySelector(".score").textContent=`Your Score ${score}`
+                        setTimeout(() => {
+                            
+                            res.textContent=""
+                            document.querySelector(".score").textContent=""
+                            confirm("Want to countinue Game....")
+                            
+                            
+                            getrandomnum()
+                        }, 2000)
+                                   
+                }
+                  else if(ipnum < random){
+                   res.textContent = 'Entered number is smaller than Generated Number'
+                    
+                  }
+                  else{
+                      res.textContent = 'Entered number is greater than Generated Number'
+                  }
+                  setTimeout(() => {
+                      
+                      inum.value=""
+                  }, 2000)
+              
+            
+        })
+
+        
+
+    </script>
+</body>
+
+</html>

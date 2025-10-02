@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document object Model</title>
+    <style>
+       .b{
+        width: 200px;
+        height: 200px;
+        margin: 20px;
+        background-color: red;
+       }
+    </style>
+</head>
+<body>
+    <h1>Document Object Model</h1>
+    <!-- <div class="container">
+        <p class="box" style="font-size: 20px;" id="p1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum iste consectetur nihil itaque omnis provident, quidem accusamus quisquam perferendis dolor.</p>
+       <p class="box p2" id="p2">PRATIKSHA</p>
+       <p class="box p3" style="border: 2px;" id="p3">YESHWANTRAO CHAVHAN COLLEGE OF ENGINEERING</p>
+       <p class="box" id="p4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, vero.</p>
+       <p class="box" id="p5">End of files</p> -->
+       <span class="span" id="sp">This is Span</span>
+       <p class="para" data-datacreatedby="Pratiksha">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt perferendis aperiam quod repellat sequi tenetur inventore aliquid soluta, doloremque enim.</p>
+       <div class="box">
+        <div class="b"></div>
+        <div class="b"></div>
+       </div>
+       <div class="box">This is box2</div>
+    </div>
+    <script>
+
+        let div=document.createElement("div");
+        div.innerText="This is newly added box"
+        div.setAttribute("class","b");
+        div.setAttribute("style","backgroundColor:green");
+        container=document.querySelector(".box").after(div)
+
+
+            document.querySelectorAll(".box")[0].insertAdjacentElement("afterend", "<p>This iyeiutreywier uirtrrqutw osyoiadd</p>")
+
+
+
+    //   console.log(document);
+    //   res1=document.getElementById("p1").innerHTML;
+    //   console.log(res1);
+    //    let parent = document.getElementById("p1");
+    //     text=document.createTextNode("Created Node")
+    // parent.insertBefore(text, parent.firstChild);
+
+    //     parent.append("Appended Text")
+
+    //     ob1=document.getElementsByClassName("box");
+    //     console.log(ob1) //collectin of elements
+    //     console.log(document.getElementsByClassName("p2"));
+    //    qs=document.querySelector("#p2").innerHTML;
+    //    console.log(qs);
+    //      qs=document.querySelector(".p2").innerHTML;
+    //    console.log(qs);
+    //    qs=document.querySelectorAll(".box");//collection of elemets []
+    // //    for(i in qs){
+    // //     qs[i].style.backgroundColor="green";
+    // //    }
+    // qs.forEach(i => {
+    //    i.style.backgroundColor="purple"; 
+    // });
+    //    console.log(qs);
+        
+    </script>
+</body>
+</html>
