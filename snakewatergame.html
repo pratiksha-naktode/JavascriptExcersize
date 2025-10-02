@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    body{
+        background-color: black;
+        color: bisque;
+    }
+    </style>
+</head>
+<body>
+        <script>
+        
+        let randome=Number(Math.floor(0+Math.random()*5))
+      
+        let arr=['S','W','G','s','g','w']
+        let val=prompt("Enter S W or G")
+        console.log(val)
+        console.log(arr[randome]);
+        if(val==arr[randome]){
+            alert("Congratss!! You win...")
+        }
+        else{
+            alert("you loss the game")
+        }
+        
+    </script>
+</body>
+</html>
