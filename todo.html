@@ -1,19 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do App with LocalStorage</title>
+  <style>
+    .container {
+      width: 60vw;
+      height: 90vh;
+      background-color: cadetblue;
+      margin: 0 auto;
+      border: 2px solid black;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .box {
+      position: absolute;
+      top: 50px;
+      width: max-content;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      border: 2px solid black;
+      gap: 10px;
+    }
+    label {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    input {
+      width: 50vw;
+      height: 5vh;
+      border: 1px solid black;
+      border-radius: 6px;
+    }
+    .add {
+      width: max-content;
+      padding: 10px 15px;
+      align-self: center;
+    }
+    .td {
+      margin-left: 10px;
+    }
+    .del-btn {
+      border: 2px solid blue;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: aqua;
+      margin-left: 10%;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    
+  <div class="container">
+    <div class="box">
+      <label for="text">Add Task Here!!</label>
+      <input type="text" id="text" />
+      <button class="add">Add To-Do</button>
+    </div>
+  </div>
+
+  <script>
+    let parent = document.querySelector(".box");
+    let todolist = document.createElement("div");
+    todolist.className = "todos";
+    parent.appendChild(todolist);
+
+    // Show empty message if no todos
+    function showEmptyMessage() {
+      if (!todolist.hasChildNodes()) {
+        todolist.innerHTML = "<span>No todos</span>";
+      }
+    }
+
+    showEmptyMessage();
+
+    // Load todos from localStorage
+    function loadTodos() {
+      let todos = JSON.parse(localStorage.getItem("todos")) || [];
+      todos.forEach(todo => createTodoElement(todo.text));
+    }
+
+    // Save todos to localStorage
+    function saveTodos() {
+      const todos = [];
+      document.querySelectorAll(".todo-text").forEach(span => {
+        todos.push({ text: span.textContent });
+      });
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+
+    // Create todo element and append
+    function createTodoElement(text) {
+      // Remove "No todos" message if present
+      if (todolist.textContent === "No todos") todolist.innerHTML = "";
+
+      let div = document.createElement("div");
+      div.className = "todo";
+      div.insertAdjacentHTML(
+        "afterbegin",
+        `<span class="todo-text">${text}</span><button class="del-btn">Delete</button>`
+      );
+
+      todolist.appendChild(div);
+
+      // Delete functionality
+      div.querySelector(".del-btn").addEventListener("click", () => {
+        div.remove();
+        saveTodos();
+        showEmptyMessage();
+      });
+
+      saveTodos(); // save after creating new todo
+    }
+
+    // Add todo on button click
+    document.querySelector(".add").addEventListener("click", () => {
+      let str = document.getElementById("text").value.trim();
+      if (str === "") return;
+      createTodoElement(str);
+      document.getElementById("text").value = "";
+    });
+
+    // Load existing todos on page load
+    loadTodos();
+  </script>
 </body>
-<script>
-    localStorage.setItem("username","pratiksha")
-    localStorage.setItem("age",22)
-    let name=localStorage.getItem("username")
-    let age=localStorage.getItem("age")
-    console.log(name , age);
-    
-</script>
 </html>
