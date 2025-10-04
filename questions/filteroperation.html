@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let products=[{
+        pid:1,
+        pname:"Mobile",
+        price:22000,
+        category:"electronics"
+    },
+    {
+        pid:2,
+        pname:"laptop",
+        price:35000,
+        category:"electronics"
+    },
+    {
+        pid:3,
+        pname:"saree",
+        price:2000,
+        category:"clothes"
+    },
+    {
+        pid:5,
+        pname:"spoons",
+        price:500,
+        category:"utensile"
+    }]
+
+
+function FilterProduct(products, criteria) {//We need to give criteria also to filter items--their are multiple key and values based on that need to sort
+    let results=[]
+
+   for(item of products){// refer to each object of product array
+
+    for(key in criteria)
+
+    if (item[key]!=criteria[key]) { //item[keys]== key inside criteria 
+        break;
+    } else{
+        results.push(item)
+    }
+    
+    }
+
+return results;
+}
+console.log(FilterProduct(products,{price:500}))
+console.log(FilterProduct(products,{category:"electronics"}));
+
+    
+</script>
+</html>
