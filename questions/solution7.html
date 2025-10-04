@@ -1,13 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes App</title>
+  <style>
+    .container {
+      width: 50vw;
+      height: 100vh;
+      margin: 0 auto;
+      border: 2px solid gray;
+      border-radius: 6px;
+      background-color: cadetblue;
+      display: flex;
+      flex-direction: column;
+      padding-top: 50px;
+      gap: 20px;
+      align-items: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: aquamarine;
+      font-weight: bold;
+      border: 1px solid rgb(8, 6, 6);
+      border-radius: 5px;
+      box-shadow: 0 0 10px 2px black;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    button:active {
+      background-color: rgb(28, 167, 121);
+    }
+
+    .notes {
+      background-color: rgb(222, 231, 199);
+      margin: 10px;
+      border-radius: 5px;
+      padding: 10px;
+      width: 80%;
+    }
+
+    .para {
+      word-break: break-all;
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body>
-    <script>
-        
-    </script>
+  <div class="container">
+    <label for="note-text">Add notes here!</label>
+    <textarea id="note-text" rows="10" cols="70"></textarea>
+    <button id="add">Add</button>
+  </div>
+
+  <script>
+    // Load existing notes or initialize empty array
+    let array = JSON.parse(localStorage.getItem("array")) || [];
+
+    // Function to display all notes
+    function displayNotes() {
+      const container = document.querySelector(".container");
+
+      // Remove all old notes before re-rendering
+      document.querySelectorAll(".notes").forEach(note => note.remove());//remove duplicates
+
+      // Render each note
+      array.forEach(element => {
+        const div = document.createElement("div");
+        div.className = 'notes';
+        div.innerHTML = `<p class="para">${element}</p>`;
+        container.appendChild(div);
+      });
+    }
+
+    // Function to save a note
+    function saveNotes(note_text) {
+      if (note_text.trim() === "") {
+        alert("Please enter a note!");
+        return;
+      }
+
+      array.push(note_text);
+      localStorage.setItem("array", JSON.stringify(array));
+
+      document.getElementById("note-text").value = "";
+      displayNotes();
+    }
+
+    // Add note button event
+    document.getElementById("add").addEventListener("click", () => {
+      const note_text = document.getElementById("note-text").value;
+      saveNotes(note_text);
+    });
+
+    // Display notes when the page loads
+    displayNotes();
+  
+  </script>
 </body>
 </html>
