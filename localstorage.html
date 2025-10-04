@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body onload="storeddata()">
+<body onload="loaddata()">
     
 
 
@@ -50,11 +50,14 @@
     ]
     localStorage.setItem("array",JSON.stringify(array));
     let data=JSON.parse(localStorage.getItem("array"))
-        array.forEach((name,age)=>{
-
-            console.log("username:",data.username)
-            console.log("age :",array.age)
-        })
+    console.log(data);
+    data.forEach(element => {
+        console.log(element.username , element.age);
+        
+                
+    });
+    
+      
   }
 
 

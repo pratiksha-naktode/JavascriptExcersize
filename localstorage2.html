@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text " id="text" placeholder="add your task">
+    <button id="btn">Add</button>
+    <button id="show">Show</button>
+    <button id="remove">Remove All data</button>
+
+    <script>
+        
+        let todos = JSON.parse(localStorage.getItem("todos")) || [];//reset inital localstorage data
+
+        document.getElementById("btn").addEventListener('click',()=>{ //add data
+            let todo=document.getElementById("text").value;
+            if(todo){ //add todo 
+
+                todos.push(todo)
+                alert("data saved.....")
+            }
+          else{
+            alert("enter data first") //if it is empty
+          }
+
+            localStorage.setItem("todos",JSON.stringify(todos)) //store in localstorage
+            
+            
+            document.getElementById("text").value=""//clear input value
+            
+        })
+
+            //Show Data....
+        document.getElementById("show").addEventListener('click',()=>{
+            let data=JSON.parse(localStorage.getItem("todos")) ||[] //if data present || if not empty array
+
+           data.length==0?alert('no data found') : data.forEach(element => {
+            let div=document.createElement("div")
+            div.insertAdjacentHTML("afterbegin",`<span>${element}</span>`)
+            document.body.appendChild(div)
+                console.log(element);
+            });
+            
+        })
+
+        //clear all data
+        document.getElementById("remove").addEventListener('click',()=>{
+            localStorage.clear()
+            todos=[] //reset todos
+        })
+              
+       
+    </script>
+</body>
+</html>
