@@ -4,34 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+             margin-top: 20px; 
+             width: 50%; 
+             border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
-    
+    <input type="text"  id="item" placeholder="enter item">
+    <input type="number" id="price" placeholder="enter price">
+    <input type="number" id="qty" placeholder="select quantity">
+    <button id="add">Add to Cart</button>
+    <button id="total">Calculate total cost</button>
+
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    <span id="totalcost"></span>
 </body>
 <script>
     let products=[{
         pid:1,
         pname:"Mobile",
         price:22000,
-        category:"electronics"
+        category:"electronics",
+        qty:2
     },
     {
         pid:2,
         pname:"laptop",
         price:35000,
-        category:"electronics"
+        category:"electronics",
+        qty:1,
     },
     {
         pid:3,
         pname:"saree",
         price:2000,
-        category:"clothes"
+        category:"clothes",
+        qty:5,
     },
     {
         pid:5,
         pname:"spoons",
         price:500,
-        category:"utensile"
+        category:"utensile",
+        qty:6
     }]
 
 
@@ -54,6 +83,51 @@ return results;
 }
 console.log(FilterProduct(products,{price:500}))
 console.log(FilterProduct(products,{category:"electronics"}));
+
+
+function Calculate(products){
+    let totalcost=0;
+    for(item of products){
+    totalcost=totalcost+(item.price*item.qty)
+    }
+    return totalcost;
+}
+console.log("total cost of products",Calculate(products))
+
+let products1=[]
+document.getElementById("add").addEventListener('click',()=>{
+    
+    let item=document.getElementById("item").value
+    let price=document.getElementById("price").value
+    let quantity=document.getElementById("qty").value
+    let object={
+        name:item,
+        price:price,
+        qty:quantity
+    }
+   products1.push(object)
+
+
+   let tbody=document.getElementById("tbody");
+   tbody.innerHTML=""
+   products1.forEach((item)=>{
+    let row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.price}</td>
+            <td>${item.qty}</td>
+            <td>${item.price * item.qty}</td>
+        `;
+        tbody.appendChild(row);
+      
+   })
+   
+       
+})
+document.getElementById("total").addEventListener('click',()=>{
+    let totalcost=Calculate(products1)
+   document.getElementById("totalcost").textContent="Total cost: "+totalcost;
+})
 
     
 </script>
