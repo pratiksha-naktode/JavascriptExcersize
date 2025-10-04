@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        async function DuplicateArray(arr) {
+
+           const promises=arr.map((num)=>{
+            return new Promise((resolve)=>{
+                setTimeout(() => {
+                    resolve(num*2)
+                }, 5000)
+                
+            })
+           })
+           return promises;
+        }
+
+        async function main(params) {
+            let array=[1,2,3,5,6]
+            console.log(array);
+            let op=await DuplicateArray(array);
+            console.log(op);//gives pending promises
+             const results = await Promise.all(op);
+              console.log(results); 
+            
+            
+        }
+        main()
+    </script>
+</body>
+</html>
