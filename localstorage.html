@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="storeddata()">
+    
+
+
+<input id="username" placeholder="Enter your name">
+<input id="age" placeholder="enter your age">
+<button onclick="save()">Save</button>
+<button onclick="show()">Show</button>
+
+<script>
+  function save() {
+    let name = document.getElementById("username").value;
+    let age=document.getElementById("age").value;
+    let student={
+        username:name,
+        age:age
+    }
+    localStorage.setItem("student",JSON.stringify(student))
+    alert("data saved!");
+  }
+
+  function show() {
+    let savedata=JSON.parse(localStorage.getItem("student"))
+
+    alert("Stored name: " + savedata.username + "  age: "+ savedata.age);
+  }
+
+
+  function loaddata(){
+    let array=[
+        {
+            username:"sneha",
+            age:12
+        },
+        {
+            username:"siya",
+            age:19     
+          },
+        {
+            username:"radha",
+            age:78
+        }
+    ]
+    localStorage.setItem("array",JSON.stringify(array));
+    let data=JSON.parse(localStorage.getItem("array"))
+        array.forEach((name,age)=>{
+
+            console.log("username:",data.username)
+            console.log("age :",array.age)
+        })
+  }
+
+
+function storeddata() {
+    let array=["go to  school", "do homework","had lunch","play cricket"]
+    localStorage.setItem("array",JSON.stringify(array))
+    let data=JSON.parse(localStorage.getItem("array"))
+    console.log('tasks:',data);
+    data.forEach(i=>{
+
+        console.log( i);
+    })
+    
+    
+}
+
+</script>
+
+
+</body>
+</html>
