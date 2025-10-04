@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+    <input type="text" id="item" placeholder="enter Cofee  name">
+    <button id="add">Add Item</button>
     
     <script>
         async function DuplicateArray(arr) {
@@ -31,7 +33,56 @@
             
             
         }
-        main()
+       // main()
+
+       async function PlaceOrder(item) {
+       return new Promise((resolve)=>{
+            let delay=(Math.floor(5+Math.random()*10))*1000
+            console.log("item added:",item)
+            setTimeout(() => {
+                
+                alert("your order is confirmed!!!!!!")
+            }, delay)
+            
+            
+        })
+        
+       }
+
+//SEQUENTIAL PROMISES=--- Solution 9
+async function PlaceYourOrder(item) {
+let delay1=(Math.floor(0+Math.random()*5))*1000
+let delay2=(Math.floor(5+Math.random()*10))*1000
+
+    const prom1= await new Promise((resolve)=>{
+        setTimeout(() => {
+            resolve("Your order is confirmed!!!!")
+        }, delay1)
+        
+    })
+    alert(prom1);
+    
+    const prom2=await new Promise((resolve)=>{
+        setTimeout(() => {
+            resolve(`your ${item} is Ready!!!!!`)
+        }, delay2)
+        
+    })
+    alert(prom2)
+    
+}
+
+       document.getElementById("add").addEventListener('click',async()=>{
+        let item=document.getElementById("item").value;
+    //   let  res= await PlaceOrder(item)
+    //    alert(res)
+         PlaceYourOrder(item)
+    
+       })
+
+       
+   
+       
     </script>
 </body>
 </html>
