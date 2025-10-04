@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="enter password" id="pwd">
+    <button id="btn"> OK</button>
+    <p id="error"></p>
+
+    <script>
+        //     let str="Pratiksha"
+        //     console.log(str.length);
+        //     let strarr=str.split("")
+        //     let revstr=[];
+
+        //     for(i=strarr.length-1;i>=0;i--){
+        //         revstr.push(strarr[i])
+        //     }
+        //    let rev=revstr.join("")
+        //     console.log('original string: ',str);
+        //     console.log('revserse string: ',rev);
+        //     console.log('concatenate sting: ',str.concat(rev));
+
+        /// single line:- let rev = str.split("").reverse().join("");
+        //console.log(`Reversed string: ${rev}`);
+        //console.log(`Concatenated: ${str + rev}`);
+
+
+        //SOLUTION 2
+        function Duplicate(arr) {
+            let duplicate = []
+            for (i in arr) {
+                if (arr[i] === arr[i - 1]) {
+                    duplicate.push(arr[i])
+
+                }
+                else {
+                    duplicate.push(arr[i] * 2)
+                }
+            }
+            console.log(duplicate);
+        }
+        let array = [1, 2, 9, 6, 6]
+        Duplicate(array)
+
+
+        //solution 3
+
+        function CheckPassword(password) {
+            let isupper = false;
+            let islower = false;
+            let isdigit = false;
+            let error = document.getElementById("error");
+
+            // Step 1: Check length first
+            if (password.length < 8) {
+                error.textContent = "Password should contain at least 8 characters";
+                return; // stop further checks
+            }
+
+            // Step 2: Loop to set flags
+            for (let i = 0; i < password.length; i++) {
+                let ch = password.charAt(i);
+
+                if (ch >= 'A' && ch <= 'Z') isupper = true;
+                else if (ch >= 'a' && ch <= 'z') islower = true;
+                else if (ch >= '0' && ch <= '9') isdigit = true;
+            }
+
+            // Step 3: Check each requirement
+            if (!islower) {
+                error.textContent = "Password should contain at least one lowercase letter";
+                return;
+            }
+
+            if (!isupper) {
+                error.textContent = "Password should contain at least one uppercase letter";
+                return;
+            }
+
+            if (!isdigit) {
+                error.textContent = "Password should contain at least one digit";
+                return;
+            }
+
+            // Step 4: If all conditions are met
+            error.textContent = "✅ Password is strong!";
+        }
+
+        document.getElementById("btn").addEventListener('click', () => {
+            let pwd = document.getElementById("pwd").value
+            CheckPassword(pwd)
+
+
+
+        })
+
+
+        //solution 
+
+        function Sum(arr) {
+            let result = 0;
+            // arr.forEach(element => {
+            //     if(element < 0){
+            //         return result;// return does not stop iteration inside foreach
+            //     } else {
+            //         result += element;
+            //     }
+
+            // });
+
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] < 0) {
+                    break
+                }
+                else {
+                    result += arr[i];
+                }
+            }
+            return result
+        }
+        let arr = [1, 1, 1, 23, -3, 7, 6]
+        console.log("addition " + Sum(arr))
+
+        //SOLUTION 6
+
+        function CountVowel(str) {
+            let count = 0;
+            for (let i = 0; i < str.length; i++) {
+                let ch = str.charAt(i)
+
+                if (ch === 'a' || ch === 'i' || ch == 'o' || ch === 'u' || ch === 'e' || ch === 'A' || ch === 'U' || ch === 'E' || ch === 'O' || ch === 'I') {
+                    count++;
+                }
+            }
+            return count;
+
+        }
+
+             /*
+             let vowels = "aeiou";
+
+            for (let ch of str) {
+            if (vowels.includes(ch.toLowerCase())) count++;
+            }*/
+
+        let s = "pratiksAha"
+        console.log("No of Vowels: ", CountVowel(s));
+
+
+
+    </script>
+</body>
+
+</html>
