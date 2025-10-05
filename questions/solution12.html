@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Scroll To Top Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Create long content to scroll */
+        .content {
+            height: 2000px;
+            background: linear-gradient(white, lightblue);
+        }
+
+        /* Scroll to top button */
+        #scrollBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: royalblue;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+
+        #scrollBtn:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌐 Smooth Scroll To Top Example</h1>
+    <p>Scroll down and click the "Go to Top" button to see the smooth scrolling effect.</p>
+
+    <div class="content"></div>
+
+    <button id="scrollBtn">⬆ Go to Top</button>
+
+    <script>
+        // Smooth scroll function
+        function smoothScrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        // Add click event to button
+        document.getElementById("scrollBtn").addEventListener("click", smoothScrollToTop);
+
+
+        //SOLUTION 11
+       function SetAuthToken(token){
+        let time=Date.now()*60*60*1000;
+        tokendata={
+            token:token,
+            expirytime:time
+        }
+        localStorage.setItem("tokendata",JSON.stringify(tokendata))
+       }
+
+
+    </script>
+
+</body>
+</html>

@@ -18,7 +18,10 @@
       gap: 20px;
       align-items: center;
     }
-
+    .toggle-class{
+        background-color: black;
+        color: white;
+    }
     button {
       padding: 10px 20px;
       background-color: aquamarine;
@@ -98,6 +101,7 @@
       saveNotes(note_text);
     });
 
+    document.body.classList.toggle("toggle-class")
     // Display notes when the page loads
     displayNotes();
   
